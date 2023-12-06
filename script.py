@@ -105,13 +105,14 @@ def help():
     print("  update_secret <name> <secret>  Update an existing secret")
     print("  generate_mfa <name>            Generate an MFA code")
     print("  export_secrets <file_path>     Export secrets to a file")
+    print("  help                           Show this help message")
     print("")
     print("Examples:")
-    print("  ./script.py add_secrets abcdef12345")
-    print("  ./script.py delete_secret my_secret")
-    print("  ./script.py list")
-    print("  ./script.py update_secret my_secret new_secret")
-    print("  ./script.py generate_mfa my_secret")
+    print("  ./script.py add_secrets my_secret_name my_secret_key")
+    print("  ./script.py delete_secret my_secret_name")
+    print("  ./script.py list_secrets")
+    print("  ./script.py update_secret my_secret_name new_secret_key")
+    print("  ./script.py generate_mfa my_secret_name")
     print("  ./script.py export_secrets export_file.json")
 
 def generate_mfa(name):
@@ -139,24 +140,44 @@ def generate_mfa(name):
 def main():
     parser = argparse.ArgumentParser(description="CLI to store secrets and generate MFA codes.")
     parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "help"], help="Command to execute.")
-    parser.add_argument("--name", help="Name of the secret.")
-    parser.add_argument("--secret", help="Value of the secret.")
-    parser.add_argument("--export_file", help="File path to export secrets.")
+    parser.add_argument("args", nargs=argparse.REMAINDER, help="Arguments for the command.")
 
     args = parser.parse_args()
 
     if args.command == "add_secret":
-        add_secret(args.name, args.secret)
+        if len(args.args) == 2:
+            name, secret = args.args
+            add_secret(name, secret)
+        else:
+            print(RED + "Error: add_secret command requires exactly two arguments (name and secret)." + RESET)
     elif args.command == "generate_mfa":
-        result = generate_mfa(args.name)
+        if len(args.args) == 1:
+            name = args.args[0]
+            generate_mfa(name)
+        pass
     elif args.command == "delete_secret":
-        result = delete_secret(args.name)
+        if len(args.args) == 1:
+            name = args.args[0]
+            delete_secret(name)
+        else:
+            print(RED + "Error: delete_secret command requires exactly one argument (name)." + RESET)
+        pass
     elif args.command == "list_secrets":
         list_secrets()
+        pass
     elif args.command == "update_secret":
-        update_secret(args.name, args.secret)
+        if len(args.args) == 2:
+            name, secret = args.args
+            update_secret(name, secret)
+        else:
+            print(RED + "Error: update_secret command requires exactly two arguments (name and new secret)." + RESET)
     elif args.command == "export_secrets":
-        export_secrets(args.export_file)
+        if len(args.args) == 1:
+            file_path = args.args[0]
+            export_secrets(file_path)
+        else:
+            print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
+        pass
     elif args.command == "help":
         help()
 
