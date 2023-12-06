@@ -24,10 +24,6 @@ alias 'mfa delete'='$INSTALL_DIR/$SCRIPT_NAME delete_secret'
 alias 'mfa help'='$INSTALL_DIR/$SCRIPT_NAME help'
 # MFA CLI aliases end
 " >> "$config_file"
-
-    
 done
-
-
 
 echo "Script installed successfully, please restart your terminal!"
