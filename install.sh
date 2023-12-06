@@ -10,8 +10,7 @@ INSTALL_DIR="$HOME/mfa-cli"
 # Create the installation directory if it doesn't exist
 mkdir -p "$INSTALL_DIR"
 
-# Download the script from your repository and save it to the installation directory
-curl -sSL https://your/repo/path/$SCRIPT_NAME -o "$INSTALL_DIR/$SCRIPT_NAME"
+curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/script.py  -o "$INSTALL_DIR/$SCRIPT_NAME"
 
 # Full path to the directory where the installation script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
