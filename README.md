@@ -10,6 +10,13 @@ This is a simple Command Line Interface (CLI) tool written in Python for managin
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.sh)"
 ```
 
+## Uninstallation
+
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.sh)"
+```
+
+
 ## Features
 - **add_secret**: Adds a new secret with a specified name and value.
 - **delete_secret**: Deletes a stored secret by name.
