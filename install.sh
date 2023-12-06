@@ -14,12 +14,35 @@ chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 for config_file in "${CONFIG_FILES[@]}"; do
-    echo "alias mfa export='$INSTALL_DIR/$SCRIPT_NAME export_secrets --export_file secrets.json'" >> "$config_file"
-    echo "function mfa_add() {$INSTALL_DIR/$SCRIPT_NAME add_secret --name "$1" --secret "$2"} alias mfa add='mfa_add()'" >> "$config_file"
-    echo "function mfa_delete() {$INSTALL_DIR/$SCRIPT_NAME delete_secret --name "$1"} alias mfa delete='mfa_delete()'" >> "$config_file"
-    echo "function mfa_list() { $INSTALL_DIR/$SCRIPT_NAME list_secrets } alias mfa list='mfa_list()'" >> "$config_file"
-    echo "function mfa_generate() { $INSTALL_DIR/$SCRIPT_NAME generate_mfa --name "$1"} alias mfa='mfa_generate()'" >> "$config_file"
-    echo "function mfa_update() { $INSTALL_DIR/$SCRIPT_NAME update_secret --name "$1" --secret "$2"} alias mfa update='mfa_update()'" >> "$config_file"
+
+    echo "
+        alias mfa_export='/home/egydio/mfa-cli/script.py export_secrets --export_file secrets.json'
+
+        function mfa add() {
+            /home/egydio/mfa-cli/script.py add_secret --name "$1" --secret "$2"
+        }
+        alias 'mfa_add'='mfa_add'
+
+        function mfa delete() {
+            /home/egydio/mfa-cli/script.py delete_secret --name "$1"
+        }
+        alias 'mfa_delete'='mfa_delete'
+
+        function mfa list() {
+            /home/egydio/mfa-cli/script.py list_secrets
+        }
+        alias 'mfa_list'='mfa_list'
+
+        function mfa generate() {
+            /home/egydio/mfa-cli/script.py generate_mfa --name "$1"
+        }
+        alias 'mfa_generate'='mfa_generate'
+
+        function mfa update() {
+            /home/egydio/mfa-cli/script.py update_secret --name "$1" --secret "$2"
+        }
+        alias 'mfa_update'='mfa_update'
+            " >> "$config_file"
     
 done
 
