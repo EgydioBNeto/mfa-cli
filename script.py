@@ -94,6 +94,26 @@ def export_secrets(file_path):
         json.dump(secrets, export_file, indent=2)
     print(GREEN + f"Secrets exported successfully to '{file_path}'." + RESET)
 
+def help():
+    print("MFA CLI - Help")
+    print("Usage: mfa-cli <command> [options]")
+    print("")
+    print("Commands:")
+    print("  add_secret <name> <secret>     Add a new secret")
+    print("  delete_secret <name>           Delete a stored secret")
+    print("  list_secrets                   List all stored secrets")
+    print("  update_secret <name> <secret>  Update an existing secret")
+    print("  generate_mfa <name>            Generate an MFA code")
+    print("  export_secrets <file_path>     Export secrets to a file")
+    print("")
+    print("Examples:")
+    print("  ./script.py add_secrets abcdef12345")
+    print("  ./script.py delete_secret my_secret")
+    print("  ./script.py list")
+    print("  ./script.py update_secret my_secret new_secret")
+    print("  ./script.py generate_mfa my_secret")
+    print("  ./script.py export_secrets export_file.json")
+
 def generate_mfa(name):
     secrets = load_secrets()
     if name in secrets:
@@ -118,7 +138,7 @@ def generate_mfa(name):
 
 def main():
     parser = argparse.ArgumentParser(description="CLI to store secrets and generate MFA codes.")
-    parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets"], help="Command to execute.")
+    parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "help"], help="Command to execute.")
     parser.add_argument("--name", help="Name of the secret.")
     parser.add_argument("--secret", help="Value of the secret.")
     parser.add_argument("--export_file", help="File path to export secrets.")
@@ -137,6 +157,8 @@ def main():
         update_secret(args.name, args.secret)
     elif args.command == "export_secrets":
         export_secrets(args.export_file)
+    elif args.command == "help":
+        help()
 
 if __name__ == "__main__":
     main()
