@@ -108,12 +108,12 @@ def help():
     print("  help                           Show this help message")
     print("")
     print("Examples:")
-    print("   mfa_add my_secret_name my_secret_key")
-    print("   mfa_delete my_secret_name")
-    print("   mfa_list")
-    print("   mfa_update my_secret_name new_secret_key")
-    print("   mfa_generate my_secret_name")
-    print("   mfa_export export_file.json")
+    print("   mfa add my_secret_name my_secret_key")
+    print("   mfa delete my_secret_name")
+    print("   mfa list")
+    print("   mfa update my_secret_name new_secret_key")
+    print("   mfa generate my_secret_name")
+    print("   mfa export export_file.json")
 
 def generate_mfa(name):
     secrets = load_secrets()
