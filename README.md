@@ -37,7 +37,7 @@ The script uses a secrets.json file to store secrets. Ensure that the file exist
 Python 3
 
 ## Author
-[EgydioBNeto](https://github.com/EgydioBNeto)
+[EgydioBNeto](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE)
 
 ## License
 This project is licensed under the [MIT License](URL_do_Link).
