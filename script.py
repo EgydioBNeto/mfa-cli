@@ -152,6 +152,8 @@ def main():
         if len(args.args) == 1:
             name = args.args[0]
             generate_mfa(name)
+        else:
+            print(RED + "Error: generate_mfa command requires exactly one argument (name)." + RESET)
         pass
     elif args.command == "delete_secret":
         if len(args.args) == 1:
@@ -162,7 +164,9 @@ def main():
         pass
     elif args.command == "list_secrets":
         if len(args.args) == 0:
-        list_secrets()
+            list_secrets()
+        else:
+            print(RED + "Error: list_secrets command requires no arguments." + RESET)
         pass
     elif args.command == "update_secret":
         if len(args.args) == 2:
@@ -178,7 +182,10 @@ def main():
             print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
         pass
     elif args.command == "help":
-        help()
+        if len(args.args) == 0:
+            help()
+        else:
+            print(RED + "Error: help command requires no arguments." + RESET)
 
 if __name__ == "__main__":
     main()
