@@ -2,10 +2,20 @@
 
 SCRIPT_NAME="script.py"
 CONFIG_FILES=(~/.bashrc ~/.zshrc)
-
+MFA_CLI_DIR=~/mfa-cli
 INSTALL_DIR="$HOME/mfa-cli"
 
-mkdir -p "$INSTALL_DIR"
+
+
+
+if [ -d "$MFA_CLI_DIR" ]; then
+    echo -e "mfa-cli' already exists. Proceeding with clenup."
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.sh)"
+    mkdir -p "$INSTALL_DIR"
+else
+    echo -e "Directory 'mfa-cli' does not exist. Proceeding with installation."
+    mkdir -p "$INSTALL_DIR"
+fi
 
 curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/script.py  -o "$INSTALL_DIR/$SCRIPT_NAME"
 
@@ -34,4 +44,4 @@ alias mfh='$INSTALL_DIR/$SCRIPT_NAME help'
 
 done
 
-echo "Script installed successfully, please restart your terminal!"
+echo -e "\033[92mmfa-cli installed successfully, please restart your terminal!\033[0m"
