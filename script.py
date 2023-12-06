@@ -22,7 +22,7 @@ def load_secrets():
         with open(SECRET_FILE, "r") as file:
             content = file.read()
             if not content:
-                return {}  # Return an empty dictionary if the file is empty
+                return {} 
             secrets = json.loads(content)
         return secrets
     except FileNotFoundError:
