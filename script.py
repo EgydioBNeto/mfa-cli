@@ -10,8 +10,7 @@ import binascii
 import os
 
 SECRET_FILE = "secrets.json"
-MAX_SECRET_LENGTH = 32
-
+MAX_SECRET_LENGTH = 256
 GREEN = "\033[92m"
 RED = "\033[91m"
 YELLOW = "\033[93m"
@@ -154,6 +153,8 @@ def main():
         if len(args.args) == 1:
             name = args.args[0]
             generate_mfa(name)
+        else:
+            print(RED + "Error: generate_mfa command requires exactly one argument (name)." + RESET)
         pass
     elif args.command == "delete_secret":
         if len(args.args) == 1:
@@ -182,7 +183,10 @@ def main():
             print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
         pass
     elif args.command == "help":
-        help()
+        if len(args.args) == 0:
+            help()
+        else:
+            print(RED + "Error: help command requires no arguments." + RESET)
 
 if __name__ == "__main__":
     main()
