@@ -41,4 +41,6 @@ alias 'mfa_update'='mfa_update'
     
 done
 
+
+
 echo "Script installed successfully, please restart your terminal!"
