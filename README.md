@@ -22,13 +22,13 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main
 ## Usage
 
 ### Commands:
-- **mfa_add** <name> <secret>: Add a new secret.
-- **mfa_delete** <name>: Delete a stored secret.
-- **mfa_list** List all stored secrets.
-- **mfa_update** <name> <secret>: Update an existing secret.
-- **mfa_generate** <name>: Generate an MFA code.
-- **mfa_export** <file_path>: Export secrets to a file.
-- **mfa_help** Show this help message.
+- **mfa add** <name> <secret>: Add a new secret.
+- **mfa delete** <name>: Delete a stored secret.
+- **mfa list** List all stored secrets.
+- **mfa update** <name> <secret>: Update an existing secret.
+- **mfa generate** <name>: Generate an MFA code.
+- **mfa export** <file_path>: Export secrets to a file.
+- **mfa help** Show this help message.
 
 # Configuration
 The script uses a secrets.json file to store secrets. Ensure that the file exists or is created in the same directory as the script.
