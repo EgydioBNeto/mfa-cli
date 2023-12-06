@@ -21,8 +21,5 @@ echo "alias $ALIAS_NAME='$INSTALL_DIR/$SCRIPT_NAME'" >> ~/.bashrc
 # Add the alias to the zsh configuration file
 echo "alias $ALIAS_NAME='$INSTALL_DIR/$SCRIPT_NAME'" >> ~/.zshrc
 
-# Update the shell configurations
-source ~/.bashrc
-source ~/.zshrc
 
-echo "Script installed successfully!"
+echo "Script installed successfully, please restart your terminal!"
