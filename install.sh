@@ -12,6 +12,8 @@ mkdir -p "$INSTALL_DIR"
 
 curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/script.py  -o "$INSTALL_DIR/$SCRIPT_NAME"
 
+chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+
 # Full path to the directory where the installation script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
