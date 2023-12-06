@@ -10,7 +10,8 @@ import binascii
 import os
 
 SECRET_FILE = "secrets.json"
-MAX_SECRET_LENGTH = 256
+MAX_SECRET_LENGTH = 32
+
 GREEN = "\033[92m"
 RED = "\033[91m"
 YELLOW = "\033[93m"
@@ -25,18 +26,17 @@ def load_secrets():
             secrets = json.loads(content)
         return secrets
     except FileNotFoundError:
-        # If the file doesn't exist, create it with an empty dictionary
         with open(SECRET_FILE, "w") as file:
             json.dump({}, file)
         return {}
-    except json.decoder.JSONDecodeError:
+    except (IOError, json.decoder.JSONDecodeError) as e:
+        print(RED + f"Error handling secrets file: {str(e)}" + RESET)
         return {}
-
 
 def save_secrets(secrets):
     with open(SECRET_FILE, "w") as file:
         json.dump(secrets, file, indent=2)
-
+    
 def add_secret(name, secret):
     if name and secret is not None:
         if name not in load_secrets():
@@ -51,7 +51,6 @@ def add_secret(name, secret):
             print(RED + f"Error: Secret with the name '{name}' already exists." + RESET)
     else:
         print(RED + "Error: Name and secret value cannot be null." + RESET)
-
 
 def delete_secret(name):
     secrets = load_secrets()
@@ -84,14 +83,15 @@ def update_secret(name, secret):
         print(RED + f"Error: Secret with the name '{name}' not found." + RESET)
 
 def export_secrets(file_path):
+    # Certifique-se de que o caminho do arquivo seja relativo à pasta do script
+    file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), file_path)
     secrets = load_secrets()
-    if not os.path.exists(file_path):
+    try:
         with open(file_path, "w") as export_file:
-            json.dump({}, export_file)
-        print(GREEN + f"Empty file created at '{file_path}'." + RESET)
-    with open(file_path, "w") as export_file:
-        json.dump(secrets, export_file, indent=2)
-    print(GREEN + f"Secrets exported successfully to '{file_path}'." + RESET)
+            json.dump(secrets, export_file, indent=2)
+        print(GREEN + f"Secrets exported successfully to '{file_path}'." + RESET)
+    except IOError as e:
+        print(RED + f"Error exporting secrets: {str(e)}" + RESET)
 
 def help():
     print("MFA CLI - Help")
@@ -135,7 +135,6 @@ def generate_mfa(name):
     else:
         return  print(RED + f"Secret for {name} not found." + RESET)
 
-
 def main():
     parser = argparse.ArgumentParser(description="CLI to store secrets and generate MFA codes.")
     parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "help"], help="Command to execute.")
@@ -153,8 +152,6 @@ def main():
         if len(args.args) == 1:
             name = args.args[0]
             generate_mfa(name)
-        else:
-            print(RED + "Error: generate_mfa command requires exactly one argument (name)." + RESET)
         pass
     elif args.command == "delete_secret":
         if len(args.args) == 1:
@@ -165,9 +162,7 @@ def main():
         pass
     elif args.command == "list_secrets":
         if len(args.args) == 0:
-            list_secrets()
-        else:
-            print(RED + "Error: list_secrets command requires no arguments." + RESET)
+        list_secrets()
         pass
     elif args.command == "update_secret":
         if len(args.args) == 2:
@@ -183,10 +178,7 @@ def main():
             print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
         pass
     elif args.command == "help":
-        if len(args.args) == 0:
-            help()
-        else:
-            print(RED + "Error: help command requires no arguments." + RESET)
+        help()
 
 if __name__ == "__main__":
     main()
