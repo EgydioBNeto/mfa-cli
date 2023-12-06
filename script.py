@@ -9,8 +9,8 @@ import time
 import binascii
 import os
 
-SECRET_FILE = "secrets.json"
-MAX_SECRET_LENGTH = 32
+MAX_SECRET_LENGTH = 256
+SECRET_FILE = os.path.join(os.path.expanduser("~"), "mfa-cli", "secrets.json")
 
 GREEN = "\033[92m"
 RED = "\033[91m"
@@ -34,8 +34,14 @@ def load_secrets():
         return {}
 
 def save_secrets(secrets):
+    mfa_cli_dir = os.path.join(os.path.expanduser("~"), "mfa-cli")
+    os.makedirs(mfa_cli_dir, exist_ok=True)
     with open(SECRET_FILE, "w") as file:
-        json.dump(secrets, file, indent=2)
+        try:
+            json.dump(secrets, file, indent=2)
+            print(GREEN + f"Secrets saved successfully to '{SECRET_FILE}'." + RESET)
+        except IOError as e:
+            print(RED + f"Error saving secrets: {str(e)}" + RESET)
     
 def add_secret(name, secret):
     if name and secret is not None:
@@ -83,8 +89,7 @@ def update_secret(name, secret):
         print(RED + f"Error: Secret with the name '{name}' not found." + RESET)
 
 def export_secrets(file_path):
-    # Certifique-se de que o caminho do arquivo seja relativo à pasta do script
-    file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), file_path)
+    file_path = os.path.join(os.getcwd(), file_path)
     secrets = load_secrets()
     try:
         with open(file_path, "w") as export_file:
@@ -107,12 +112,24 @@ def help():
     print("  help                           Show this help message")
     print("")
     print("Examples:")
-    print("   mfa add my_secret_name my_secret_key")
-    print("   mfa delete my_secret_name")
-    print("   mfa list")
-    print("   mfa update my_secret_name new_secret_key")
-    print("   mfa generate my_secret_name")
-    print("   mfa export export_file.json")
+    print("")
+    print("   Normal")
+    print("     mfa_add my_secret_name my_secret_key")
+    print("     mfa_delete my_secret_name")
+    print("     mfa_list")
+    print("     mfa_update my_secret_name new_secret_key")
+    print("     mfa_generate my_secret_name")
+    print("     mfa_export export_file.json")
+    print("     mfa_help")
+    print("")
+    print("   Summarized")
+    print("     mfa my_secret_name my_secret_key")
+    print("     mfd my_secret_name")
+    print("     mfl")
+    print("     mfu my_secret_name new_secret_key")
+    print("     mfg my_secret_name")
+    print("     mfe export_file.json")
+    print("     mfh")
 
 def generate_mfa(name):
     secrets = load_secrets()
