@@ -39,7 +39,6 @@ def save_secrets(secrets):
     with open(SECRET_FILE, "w") as file:
         try:
             json.dump(secrets, file, indent=2)
-            print(GREEN + f"Secrets saved successfully to '{SECRET_FILE}'." + RESET)
         except IOError as e:
             print(RED + f"Error saving secrets: {str(e)}" + RESET)
     
