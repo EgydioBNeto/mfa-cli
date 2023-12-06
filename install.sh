@@ -14,29 +14,15 @@ chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 for config_file in "${CONFIG_FILES[@]}"; do
 
 echo "
-alias mfa_export='~/mfa-cli/script.py export_secrets --export_file secrets.json'
-function mfa_add() {
-    ~/mfa-cli/script.py add_secret --name $1 --secret $2
-}
-alias mfa_add='mfa_add()'
-function mfa_delete() {
-    ~/mfa-cli/script.py delete_secret --name $1
-}
-alias mfa_delete='mfa_delete()'
-function mfa_list() {
-    ~/mfa-cli/script.py list_secrets
-}
-alias mfa_list='mfa_list()'
-function mfa_generate() {
-    ~/mfa-cli/script.py generate_mfa --name $1
-}
-alias mfa_generate='mfa_generate()'
-function mfa_update() {
-    ~/mfa-cli/script.py update_secret --name $1 --secret $2
-}
-alias mfa_update='mfa_update()'
-alias mfa_help='~/mfa-cli/script.py help'
+alias mfa_export='$INSTALL_DIR/$SCRIPT_NAME export_secrets --export_file secrets.json'
+alias mfa_add='$INSTALL_DIR/$SCRIPT_NAME add_secret'
+alias mfa_list='$INSTALL_DIR/$SCRIPT_NAME list_secrets'
+alias mfa_generate='$INSTALL_DIR/$SCRIPT_NAME generate_mfa'
+alias mfa_update='$INSTALL_DIR/$SCRIPT_NAME update_secret'
+alias mfa_delete='$INSTALL_DIR/$SCRIPT_NAME delete_secret'
+alias mfa_help='$INSTALL_DIR/$SCRIPT_NAME help'
 " >> "$config_file"
+
     
 done
 
