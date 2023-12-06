@@ -108,12 +108,12 @@ def help():
     print("  help                           Show this help message")
     print("")
     print("Examples:")
-    print("  ./script.py add_secrets my_secret_name my_secret_key")
-    print("  ./script.py delete_secret my_secret_name")
-    print("  ./script.py list_secrets")
-    print("  ./script.py update_secret my_secret_name new_secret_key")
-    print("  ./script.py generate_mfa my_secret_name")
-    print("  ./script.py export_secrets export_file.json")
+    print("   mfa_add my_secret_name my_secret_key")
+    print("   mfa_delete my_secret_name")
+    print("   mfa_list")
+    print("   mfa_update my_secret_name new_secret_key")
+    print("   mfa_generate my_secret_name")
+    print("   mfa_export export_file.json")
 
 def generate_mfa(name):
     secrets = load_secrets()
