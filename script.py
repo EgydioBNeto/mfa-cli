@@ -76,11 +76,11 @@ def list_secrets():
         print(RED + "No secrets found." + RESET)
 
 def update_secret(name, secret):
-    loadSecrets = load_secrets()
-    if name in loadSecrets:
-        old_secret = loadSecrets[name]
-        loadSecrets[name] = secret
-        save_secrets(loadSecrets)
+    load_secrets = load_secrets()
+    if name in load_secrets:
+        old_secret = load_secrets[name]
+        load_secrets[name] = secret
+        save_secrets(load_secrets)
         print(GREEN + f"Secret '{name}' updated successfully." + RESET)
         print(YELLOW + f"Old Secret: {old_secret}" + RESET)
         print(YELLOW + f"New Secret: {secret}"+ RESET)
