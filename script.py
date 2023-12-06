@@ -163,7 +163,10 @@ def main():
             print(RED + "Error: delete_secret command requires exactly one argument (name)." + RESET)
         pass
     elif args.command == "list_secrets":
-        list_secrets()
+        if len(args.args) == 0:
+            list_secrets()
+        else:
+            print(RED + "Error: list_secrets command requires no arguments." + RESET)
         pass
     elif args.command == "update_secret":
         if len(args.args) == 2:
