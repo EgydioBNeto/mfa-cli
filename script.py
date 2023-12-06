@@ -70,8 +70,8 @@ def list_secrets():
     secrets = load_secrets()
     if secrets:
         print(YELLOW + "LIST OF STORED SECRETS:" + RESET)
-        for name, secret in secrets.items():
-            print(f"{name}")
+        for count, (name, secret) in enumerate(secrets.items(), start=1):
+            print(f"{count}. {name}")
     else:
         print(RED + "No secrets found." + RESET)
 
