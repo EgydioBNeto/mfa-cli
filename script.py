@@ -13,10 +13,14 @@ import struct
 import time
 import binascii
 import os
-from colors import GREEN, RESET, RED, YELLOW
 
 MAX_SECRET_LENGTH = 256
 SECRET_FILE = os.path.join(os.path.expanduser("~"), "mfa-cli", "secrets.json")
+
+GREEN = "\033[92m"
+RED = "\033[91m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
 
 
 def load_secrets():

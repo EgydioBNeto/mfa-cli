@@ -6,13 +6,18 @@ Install Script
 
 import os
 import subprocess
-from colors import GREEN, RESET
 
 SCRIPT_NAME = "script.py"
 CONFIG_FILES = [os.path.expanduser("~/.bashrc"), os.path.expanduser("~/.zshrc")]
 INSTALL_DIR = os.path.expanduser("~/mfa-cli")
 INSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py"
 UNINSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.py"
+
+GREEN = "\033[92m"
+RED = "\033[91m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
 
 if os.path.exists(INSTALL_DIR):
     print("'mfa-cli' already exists. Proceeding with cleanup.")
