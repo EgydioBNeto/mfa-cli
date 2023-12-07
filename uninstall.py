@@ -21,12 +21,20 @@ if os.path.exists(INSTALL_DIR):
 
 for config_file in CONFIG_FILES:
     if os.path.exists(config_file):
-        with open(config_file, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        with open(config_file, 'r', encoding='utf-8') as export_file:
+            lines = export_file.readlines()
 
-        with open(config_file, 'w', encoding='utf-8') as f:
+        with open(config_file, 'w', encoding='utf-8') as export_file:
+            inside_aliases_section = False
             for line in lines:
-                if not re.search(r'# MFA CLI aliases (start|end)', line):
-                    f.write(line)
+                if re.search(r'# MFA CLI aliases start', line):
+                    inside_aliases_section = True
+                    continue
+                elif re.search(r'# MFA CLI aliases end', line):
+                    inside_aliases_section = False
+                    continue
+
+                if not inside_aliases_section:
+                    export_file.write(line)
 
 print(GREEN + "Environment cleanup complete." + RESET)
