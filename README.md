@@ -7,7 +7,7 @@ This is a simple Command Line Interface (CLI) tool written in Python for managin
 ## Installation
 
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.sh)"
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.sh)"
 ```
 
 ## Features
@@ -46,7 +46,7 @@ The script uses a secrets.json file to store secrets. Ensure that the file exist
 ## Uninstallation
 
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.sh)"
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.sh)"
 ```
 
 # Requirements
