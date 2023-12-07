@@ -21,10 +21,7 @@ RESET = "\033[0m"
 
 if os.path.exists(INSTALL_DIR):
     print("'mfa-cli' already exists. Proceeding with cleanup.")
-    subprocess.run(["curl", "fsSL", UNINSTALL_URL, "-o", "~/uninstall.py"], check=True)
-    os.chmod("~/uninstall.py", 0o755)
-    subprocess.run(["python3", "~/uninstall.py"], check=True)
-    os.remove("~/uninstall.py")
+    subprocess.run(["python3", f"{UNINSTALL_URL}"], check=True)
 else:
     print("Directory 'mfa-cli' does not exist. Proceeding with installation.")
     os.makedirs(INSTALL_DIR, exist_ok=True)
