@@ -10,7 +10,7 @@ import subprocess
 SCRIPT_NAME = "script.py"
 CONFIG_FILES = [os.path.expanduser("~/.bashrc"), os.path.expanduser("~/.zshrc")]
 INSTALL_DIR = os.path.expanduser("~/mfa-cli")
-INSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py"
+INSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/script.py"
 UNINSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.py"
 
 GREEN = "\033[92m"
