@@ -76,16 +76,20 @@ def list_secrets():
         print(RED + "No secrets found." + RESET)
 
 def update_secret(name, secret):
-    secrets = load_secrets()
-    if name in secrets:
-        old_secret = secrets[name]
-        secrets[name] = secret
-        save_secrets(secrets)
-        print(GREEN + f"Secret '{name}' updated successfully." + RESET)
-        print(YELLOW + f"Old Secret: {old_secret}" + RESET)
-        print(YELLOW + f"New Secret: {secret}"+ RESET)
-    else:
-        print(RED + f"Error: Secret with the name '{name}' not found." + RESET)
+    try:
+        secrets = load_secrets()
+        old_secret = secrets.get(name)
+        
+        if old_secret is not None:
+            secrets[name] = secret
+            save_secrets(secrets)
+            print(GREEN + f"Secret '{name}' updated successfully." + RESET)
+            print(YELLOW + f"Old Secret: {old_secret}" + RESET)
+            print(YELLOW + f"New Secret: {secret}" + RESET)
+        else:
+            print(RED + f"Error: Secret with the name '{name}' not found." + RESET)
+    except Exception as e:
+        print(RED + f"Error: {e}" + RESET)
 
 def export_secrets(file_path):
     file_path = os.path.join(os.getcwd(), file_path)
