@@ -16,8 +16,9 @@ UNINSTALL_URL = "https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/unin
 
 if os.path.exists(INSTALL_DIR):
     print("'mfa-cli' already exists. Proceeding with cleanup.")
-    subprocess.run(["curl", "fsSL", UNINSTALL_URL, "-o", f"{INSTALL_DIR}/uninstall.py"], check=True)
-    os.chmod(f"{INSTALL_DIR}/uninstall.py", 0o755)
+    subprocess.run(["curl", "fsSL", UNINSTALL_URL, "-o", f"~/uninstall.py"], check=True)
+    os.chmod(f"~/uninstall.py", 0o755)
+    os.remove(f"~/uninstall.py")
 else:
     print("Directory 'mfa-cli' does not exist. Proceeding with installation.")
     os.makedirs(INSTALL_DIR, exist_ok=True)
