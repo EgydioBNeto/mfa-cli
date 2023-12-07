@@ -21,6 +21,8 @@ RESET = "\033[0m"
 
 if os.path.exists(INSTALL_DIR):
     print("'mfa-cli' already exists. Proceeding with cleanup.")
+
+    # Add uninstallation logic here
     subprocess.run(["curl", "-fsSL", UNINSTALL_URL, "-o", f"{INSTALL_DIR}/uninstall.py"], check=True)
     os.chmod(f"{INSTALL_DIR}/uninstall.py", 0o755)
     subprocess.run([f"{INSTALL_DIR}/uninstall.py"], check=True)
@@ -29,12 +31,16 @@ else:
     print("Directory 'mfa-cli' does not exist. Proceeding with installation.")
     os.makedirs(INSTALL_DIR, exist_ok=True)
 
-subprocess.run(["curl", "-fsSL", INSTALL_URL, "-o", f"{INSTALL_DIR}/{SCRIPT_NAME}"], check=True)
-os.chmod(f"{INSTALL_DIR}/{SCRIPT_NAME}", 0o755)
 
-for config_file in CONFIG_FILES:
-    with open(config_file, "a", encoding="utf-8") as f:
-        f.write(f"""
+    if not os.path.exists(INSTALL_DIR):
+        os.makedirs(INSTALL_DIR)
+
+    subprocess.run(["curl", "-fsSL", INSTALL_URL, "-o", f"{INSTALL_DIR}/{SCRIPT_NAME}"], check=True)
+    os.chmod(f"{INSTALL_DIR}/{SCRIPT_NAME}", 0o755)
+
+    for config_file in CONFIG_FILES:
+        with open(config_file, "a", encoding="utf-8") as f:
+            f.write(f"""
 # MFA CLI aliases start
 alias mfa_export='{INSTALL_DIR}/{SCRIPT_NAME} export_secrets'
 alias mfa_add='{INSTALL_DIR}/{SCRIPT_NAME} add_secret'
@@ -53,4 +59,4 @@ alias mfh='{INSTALL_DIR}/{SCRIPT_NAME} help'
 # MFA CLI aliases end
 """)
 
-print(GREEN + "mfa-cli installed successfully, please restart your terminal!" + RESET)
+    print(GREEN + "mfa-cli installed successfully, please restart your terminal!" + RESET)
