@@ -5,6 +5,7 @@
 | Version  | Supported          |
 | -------  | ------------------ |
 | v1.0.0    | :white_check_mark:|
+| v1.2.0    | :white_check_mark:|
 
 ## Reporting a Vulnerability
 
@@ -18,6 +19,7 @@ We appreciate your interest in improving the security of our project!
 
 **Change History:**
 - *Initiation of Security Policy* 2023-12-07
+- *Added new Supported Version* 2023-12-07
 
 **Acknowledgments:**
 Thank you for your support in identifying and reporting vulnerabilities.
