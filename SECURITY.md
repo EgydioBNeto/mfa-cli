@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-To report a vulnerability, [open a new issue]([link_to_issue_tracking_system](https://github.com/EgydioBNeto/mfa-cli/issues/new)). You can expect an update on the status of your report within [estimated_time] business days.
+To report a vulnerability, [open a new issue]([link_to_issue_tracking_system](https://github.com/EgydioBNeto/mfa-cli/issues/new)). You can expect an update on the status of your report within 5 business days.
 
 If the vulnerability is accepted, we will actively work to address it and notify you when a fix is available. If the vulnerability is declined, we will explain the reasons for the decision.
 
