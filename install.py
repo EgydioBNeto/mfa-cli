@@ -19,20 +19,25 @@ YELLOW = "\033[93m"
 RESET = "\033[0m"
 
 def uninstall_mfa_cli():
+    """
+    Uninstall the 'mfa-cli' script.
+    """
     print("Uninstalling existing 'mfa-cli'...")
     subprocess.run(["curl", "-fsSL", UNINSTALL_URL, "-o", f"{INSTALL_DIR}/uninstall.py"], check=True)
     os.chmod(f"{INSTALL_DIR}/uninstall.py", 0o755)
     subprocess.run([f"{INSTALL_DIR}/uninstall.py"], check=True)
-    print("Cleanup complete.")
 
 def install_mfa_cli():
+    """
+    Install the 'mfa-cli' script.
+    """
     print("Installing 'mfa-cli'...")
     os.makedirs(INSTALL_DIR, exist_ok=True)
     subprocess.run(["curl", "-fsSL", INSTALL_URL, "-o", f"{INSTALL_DIR}/{SCRIPT_NAME}"], check=True)
     os.chmod(f"{INSTALL_DIR}/{SCRIPT_NAME}", 0o755)
     for config_file in CONFIG_FILES:
-        with open(config_file, "a", encoding="utf-8") as f:
-            f.write(f"""
+        with open(config_file, "a", encoding="utf-8") as alias_file:
+            alias_file.write(f"""
 # MFA CLI aliases start
 alias mfa_export='{INSTALL_DIR}/{SCRIPT_NAME} export_secrets'
 alias mfa_add='{INSTALL_DIR}/{SCRIPT_NAME} add_secret'
