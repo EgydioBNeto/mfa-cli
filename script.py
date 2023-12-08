@@ -190,11 +190,11 @@ def generate_mfa(name):
             truncated_hash = hmac_digest[offset:offset + 4]
             code = struct.unpack(">I", truncated_hash)[0] & 0x7FFFFFFF
             code = code % 1000000  # 6-digit code
-            return print(GREEN + f"MFA {name}: ({code:06})" + RESET)
+            return print(GREEN + f"{code:06}" + RESET)
         except binascii.Error as export_error:
-            return print(RED + f"Error generating MFA for {name}: {str(export_error)}" + RESET)
+            raise print(RED + f"Error generating MFA for {name}: {str(export_error)}" + RESET)
     else:
-        return  print(RED + f"Secret for {name} not found." + RESET)
+        raise print(RED + f"Secret for {name} not found." + RESET)
 
 def main():
     """
