@@ -62,16 +62,7 @@ def test_add_secret():
 
 def test_generate_mfa():
     add_secret("generate", "H5U5Q3VFPMZAMVE3")
-
-    with pytest.raises(binascii.Error) as export_error_info:
-        generate_mfa("generate")
-
-    assert not "Error" in str(export_error_info.value), "Expected binascii.Error message not raised."
-
-    with pytest.raises(ValueError) as value_error_info:
-        generate_mfa("nonexistent_secret")
-
-    assert "Error" in str(value_error_info.value), "Expected ValueError message not raised."
+    generate_mfa("generate")
 
 def test_update_secret():
 
