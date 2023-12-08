@@ -22,7 +22,6 @@ RED = "\033[91m"
 YELLOW = "\033[93m"
 RESET = "\033[0m"
 
-
 def load_secrets():
     """
     Load secrets.
@@ -171,6 +170,7 @@ Examples:
     mfh
 """
     )
+    return True
 
 def generate_mfa(name):
     """
@@ -192,9 +192,9 @@ def generate_mfa(name):
             code = code % 1000000  # 6-digit code
             return code
         except binascii.Error as export_error:
-            raise print(RED + f"Error generating MFA for {name}: {str(export_error)}" + RESET)
+            return print(RED + f"Error generating MFA for {name}: {str(export_error)}" + RESET)
     else:
-        raise print(RED + f"Secret for {name} not found." + RESET)
+        return print(RED + f"Secret for {name} not found." + RESET)
 
 def main():
     """
