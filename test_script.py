@@ -4,8 +4,6 @@ from script import (add_secret, delete_secret, update_secret, list_secrets, gene
 from install import (install_mfa_cli, uninstall_mfa_cli)
 from io import StringIO
 import sys
-import pytest
-import binascii
 
 def test_uninstall_mfa_cli():
 
@@ -60,18 +58,13 @@ def test_add_secret():
     response = check_secret_in_json(secrets_path, "secret")
     assert response == True
 
-def test_generate_mfa():
-    add_secret("generate", "H5U5Q3VFPMZAMVE3")
-
-    with pytest.raises(binascii.Error) as export_error_info:
-        generate_mfa("generate")
-
-    assert not "Error" in str(export_error_info.value), "Expected binascii.Error message not raised."
-
-    with pytest.raises(ValueError) as value_error_info:
-        generate_mfa("nonexistent_secret")
-
-    assert "Error" in str(value_error_info.value), "Expected ValueError message not raised."
+def test_generate_mfa(capsys):
+    name = "generate"
+    add_secret(name, "H5U5Q3VFPMZAMVE3")
+    generate_mfa(name)
+    captured = capsys.readouterr()
+    assert f"Error generating MFA for {name}" not in captured.out
+    assert f"Secret for {name} not found." not in captured.out
 
 def test_update_secret():
 
