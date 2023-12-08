@@ -53,8 +53,8 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/m
 Python 3
 
 ## Author
-[EgydioBNeto](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE)
+[EgydioBNeto](https://github.com/EgydioBNeto)
 
 ## License
-This project is licensed under the [MIT License](URL_do_Link).
+This project is licensed under the [MIT License]([URL_do_Link](https://github.com/EgydioBNeto/mfa-cli/blob/main/SECURITY.md).
 
