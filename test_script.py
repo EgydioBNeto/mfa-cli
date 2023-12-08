@@ -77,7 +77,7 @@ def test_add_secret():
     add_secret("secret", "secret_value")
     secrets_path = os.path.expanduser("~/mfa-cli/secrets.json")
     response = check_secret_in_json(secrets_path, "secret")
-    assert True in response
+    assert response == True
 
 def test_generate_mfa(capsys):
     """
@@ -135,4 +135,4 @@ def test_delete_secret():
     delete_secret("secret")
     secrets_path = os.path.expanduser("~/mfa-cli/secrets.json")
     response = check_secret_in_json(secrets_path, "secret")
-    assert False in response
+    assert response == False
