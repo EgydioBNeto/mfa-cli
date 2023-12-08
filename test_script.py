@@ -85,10 +85,19 @@ def test_list_secrets():
     result = captured_output.getvalue()
     assert "123" in result, f"String '123' not found in the response: {result}"
 
+def test_mfa_help():
+
+    mfa_help()
+    assert True
+
+def test_export_secrets():
+    export_secrets("test.json")
+    assert os.path.exists("test.json")
+    os.remove("test.json")
+
 def test_delete_secret():
 
     delete_secret("secret")
     secrets_path = os.path.expanduser("~/mfa-cli/secrets.json")
     response = check_secret_in_json(secrets_path, "secret")
     assert response == False
-

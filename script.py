@@ -171,6 +171,7 @@ Examples:
     mfh
 """
     )
+    return True
 
 def generate_mfa(name):
     """
