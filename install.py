@@ -52,7 +52,7 @@ alias mfl='{INSTALL_DIR}/{SCRIPT_NAME} list_secrets'
 alias mfg='{INSTALL_DIR}/{SCRIPT_NAME} generate_mfa'
 alias mfu='{INSTALL_DIR}/{SCRIPT_NAME} update_secret'
 alias mfd='{INSTALL_DIR}/{SCRIPT_NAME} delete_secret'
-alias mfh='{INSTALL_DIR}/{SCRIPT_NAME} help'
+alias mfh='{INSTALL_DIR}/{SCRIPT_NAME} mfa_help'
 # MFA CLI aliases end
 """)
     print(GREEN + "mfa-cli installed successfully, please restart your terminal!" + RESET)
