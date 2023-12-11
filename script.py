@@ -134,42 +134,42 @@ def export_secrets(file_path):
 
 def mfa_help():
     """
-    Display help messages.
+    Show help message.
     """
-    print(
-        """MFA CLI - Help
-Usage: mfa-cli <command> [options]
+    print ("""
+        MFA CLI - Help
+            Usage: mfa-cli <command> [options]
 
-Commands:
-  add_secret <name> <secret>     Add a new secret
-  delete_secret <name>           Delete a stored secret
-  list_secrets                   List all stored secrets
-  update_secret <name> <secret>  Update an existing secret
-  generate_mfa <name>            Generate an MFA code
-  export_secrets <file_path>     Export secrets to a file
-  help                           Show this help message
+            Commands:
+            add_secret <name> <secret>     Add a new secret
+            delete_secret <name>           Delete a stored secret
+            list_secrets                   List all stored secrets
+            update_secret <name> <secret>  Update an existing secret
+            generate_mfa <name>            Generate an MFA code
+            export_secrets <file_path>     Export secrets to a file
+            help                           Show this help message
 
-Examples:
+            Examples:
 
-  Normal
-    mfa_add my_secret_name my_secret_key
-    mfa_delete my_secret_name
-    mfa_list
-    mfa_update my_secret_name new_secret_key
-    mfa_generate my_secret_name
-    mfa_export export_file.json
-    mfa_help
+            Normal
+                mfa_add my_secret_name my_secret_key
+                mfa_delete my_secret_name
+                mfa_list
+                mfa_update my_secret_name new_secret_key
+                mfa_generate my_secret_name
+                mfa_export export_file.json
+                mfa_help
 
-  Summarized
-    mfa my_secret_name my_secret_key
-    mfd my_secret_name
-    mfl
-    mfu my_secret_name new_secret_key
-    mfg my_secret_name
-    mfe export_file.json
-    mfh
-"""
-    )
+            Summarized
+                mfa my_secret_name my_secret_key
+                mfd my_secret_name
+                mfl
+                mfu my_secret_name new_secret_key
+                mfg my_secret_name
+                mfe export_file.json
+                mfh
+        
+    """)
     return True
 
 def generate_mfa(name):
@@ -182,14 +182,14 @@ def generate_mfa(name):
         try:
             # Add padding if necessary
             secret = secret.ljust((len(secret) + 7) // 8 * 8, '=')
-            counter = int(time.time()) // 30  # Use time-based counter for TOTP
+            counter = int(time.time()) // 30 
             secret_bytes = base64.b32decode(secret, casefold=True)
             message = struct.pack(">Q", counter)
             hmac_digest = hmac.new(secret_bytes, message, hashlib.sha1).digest()
             offset = hmac_digest[-1] & 0x0F
             truncated_hash = hmac_digest[offset:offset + 4]
             code = struct.unpack(">I", truncated_hash)[0] & 0x7FFFFFFF
-            code = code % 1000000  # 6-digit code
+            code = code % 1000000
             print (GREEN + f"MFA code for {name}: {code:06}" + RESET)
             return code
         except binascii.Error as export_error:
