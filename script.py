@@ -242,7 +242,7 @@ def main():
             export_secrets(file_path)
         else:
             print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
-    elif args.command == "help":
+    elif args.command == "mfa_help":
         if len(args.args) == 0:
             mfa_help()
         else:
