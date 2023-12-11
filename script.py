@@ -202,7 +202,7 @@ def main():
     Parse command-line arguments and execute the corresponding command.
     """
     parser = argparse.ArgumentParser(description="CLI to store secrets and generate MFA codes.")
-    parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "help"], help="Command to execute.")
+    parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "mfa_help"], help="Command to execute.")
     parser.add_argument("args", nargs=argparse.REMAINDER, help="Arguments for the command.")
 
     args = parser.parse_args()
@@ -244,7 +244,7 @@ def main():
             print(RED + "Error: export_secrets command requires exactly one argument (file path)." + RESET)
     elif args.command == "help":
         if len(args.args) == 0:
-            help()
+            mfa_help()
         else:
             print(RED + "Error: help command requires no arguments." + RESET)
 
