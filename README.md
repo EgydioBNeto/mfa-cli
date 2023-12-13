@@ -1,6 +1,8 @@
 # Multi-Factor Authentication Command Line Interface
 
+<div align="center">
 ![MFA-CLI](https://github.com/EgydioBNeto/mfa-cli/assets/84047984/714533aa-22a2-4127-8d40-363e59a573fa)
+</div>
 
 ## Description
 
