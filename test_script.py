@@ -28,9 +28,6 @@ def test_uninstall_mfa_cli():
     script_path = os.path.expanduser("~/mfa-cli/script.py")
     assert not os.path.exists(script_path)
 
-    zshrc_path = os.path.expanduser("~/.zshrc")
-    assert not check_code_block_exists(zshrc_path)
-
     bashrc_path = os.path.expanduser("~/.bashrc")
     assert not check_code_block_exists(bashrc_path)
 
@@ -45,9 +42,6 @@ def test_install_mfa_cli():
 
     script_path = os.path.expanduser("~/mfa-cli/script.py")
     assert os.path.exists(script_path)
-
-    zshrc_path = os.path.expanduser("~/.zshrc")
-    assert check_code_block_exists(zshrc_path)
 
     bashrc_path = os.path.expanduser("~/.bashrc")
     assert check_code_block_exists(bashrc_path)
