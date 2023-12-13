@@ -2,6 +2,12 @@
 
 """
 mfa-cli test script
+
+This script tests the mfa-cli script. It is intended to be run with pytest.
+
+Usage:
+    pytest test_script.py
+
 """
 import os
 import json
@@ -13,6 +19,8 @@ from install import (install_mfa_cli, uninstall_mfa_cli)
 def test_uninstall_mfa_cli():
     """
     Uninstall the 'mfa-cli' script.
+
+    This test checks that the script is removed from the home directory and that the code block is removed from the .zshrc and .bashrc files.
     """
 
     uninstall_mfa_cli()
@@ -29,6 +37,8 @@ def test_uninstall_mfa_cli():
 def test_install_mfa_cli():
     """
     Install the 'mfa-cli' script.
+
+    This test checks that the script is installed in the home directory and that the code block is added to the .zshrc and .bashrc files.
     """
 
     install_mfa_cli()
@@ -72,6 +82,8 @@ def check_secret_in_json(json_path, secret_name):
 def test_add_secret():
     """
     Test add_secret function
+
+    This test checks that the secret is added to the secrets.json file.
     """
 
     add_secret("secret", "secret_value")
@@ -82,6 +94,8 @@ def test_add_secret():
 def test_generate_mfa(capsys):
     """
     Test generate_mfa function
+
+    This test checks that the MFA code is generated for the secret.
     """
     name = "generate"
     add_secret(name, "H5U5Q3VFPMZAMVE3")
@@ -93,6 +107,8 @@ def test_generate_mfa(capsys):
 def test_update_secret():
     """
     Test update_secret function
+
+    This test checks that the secret is updated in the secrets.json file.
     """
     update_secret("secret", "123")
     secrets_path = os.path.expanduser("~/mfa-cli/secrets.json")
@@ -106,6 +122,8 @@ def test_update_secret():
 def test_list_secrets():
     """
     Test list_secrets function
+
+    This test checks that the secret is listed in the secrets.json file.
     """
     captured_output = StringIO()
     sys.stdout = captured_output
@@ -116,6 +134,8 @@ def test_list_secrets():
 def test_mfa_help():
     """
     Test mfa_help function
+
+    This test checks that the help message is printed.
     """
     mfa_help()
     assert True
@@ -123,6 +143,8 @@ def test_mfa_help():
 def test_export_secrets():
     """
     Test export_secrets function
+
+    This test checks that the secrets are exported to a JSON file.
     """
     export_secrets("test.json")
     assert os.path.exists("test.json")
@@ -131,6 +153,8 @@ def test_export_secrets():
 def test_delete_secret():
     """
     Test delete_secret function
+
+    This test checks that the secret is deleted from the secrets.json file.
     """
     delete_secret("secret")
     secrets_path = os.path.expanduser("~/mfa-cli/secrets.json")

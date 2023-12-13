@@ -1,7 +1,30 @@
-#!/usr/bin/env python3
-
 """
 mfa-cli Script
+
+This script provides a command-line interface (CLI) for storing secrets and generating MFA (Multi-Factor Authentication) codes.
+The script allows users to add, delete, update, and list secrets, as well as generate MFA codes for specific secrets.
+Secrets are stored in a JSON file located at ~/.mfa-cli/secrets.json.
+
+Usage:
+    python script.py <command> [options]
+
+Commands:
+    add_secret <name> <secret>     Add a new secret
+    delete_secret <name>           Delete a stored secret
+    list_secrets                   List all stored secrets
+    update_secret <name> <secret>  Update an existing secret
+    generate_mfa <name>            Generate an MFA code
+    export_secrets <file_path>     Export secrets to a file
+    mfa_help                           Show this help message
+
+Examples:
+    python script.py add_secret my_secret_name my_secret_key
+    python script.py delete_secret my_secret_name
+    python script.py list_secrets
+    python script.py update_secret my_secret_name new_secret_key
+    python script.py generate_mfa my_secret_name
+    python script.py export_secrets export_file.json
+    python script.py help
 """
 
 import argparse
@@ -13,10 +36,10 @@ import struct
 import time
 import binascii
 import os
+import sys
 
 MAX_SECRET_LENGTH = 256
 SECRET_FILE = os.path.join(os.path.expanduser("~"), "mfa-cli", "secrets.json")
-
 GREEN = "\033[92m"
 RED = "\033[91m"
 YELLOW = "\033[93m"
@@ -24,7 +47,15 @@ RESET = "\033[0m"
 
 def load_secrets():
     """
-    Load secrets.
+    Load secrets from a file.
+
+    This function reads the contents of a secret file, parses it as JSON,
+    and returns the secrets as a dictionary. If the file does not exist,
+    it creates an empty file and returns an empty dictionary.
+
+    Returns:
+        dict: A dictionary containing the loaded secrets.
+
     """
     try:
         with open(SECRET_FILE, "r", encoding="utf-8") as file:
@@ -44,6 +75,10 @@ def load_secrets():
 def save_secrets(secrets):
     """
     Save secrets.
+
+    This function saves the provided secrets to a file named SECRET_FILE.
+    The secrets are serialized as JSON and written to the file.
+
     """
     mfa_cli_dir = os.path.join(os.path.expanduser("~"), "mfa-cli")
     os.makedirs(mfa_cli_dir, exist_ok=True)
@@ -56,6 +91,11 @@ def save_secrets(secrets):
 def add_secret(name, secret):
     """
     Add a secret.
+
+    This function adds a secret to the secrets file. If the secret already exists,
+    it prints an error message and does not add the secret. If the secret does not
+    exist, it adds the secret to the secrets file.
+        
     """
     if name and secret is not None:
         if name not in load_secrets():
@@ -74,6 +114,11 @@ def add_secret(name, secret):
 def delete_secret(name):
     """
     Delete a secret.
+
+    This function deletes a secret from the secrets file. If the secret does not exist,
+    it prints an error message and does not delete the secret. If the secret exists,
+    it deletes the secret from the secrets file.
+
     """
     secrets = load_secrets()
     if name in secrets:
@@ -86,6 +131,8 @@ def delete_secret(name):
 def list_secrets():
     """
     List all stored secrets.
+
+    This function lists all the secrets stored in the secrets file.
     """
     secrets = load_secrets()
     if secrets:
@@ -98,6 +145,8 @@ def list_secrets():
 def update_secret(name, secret):
     """
     Update an existing secret.
+
+    This function updates an existing secret in the secrets file. If the secret does not exist, it prints an error message.
     """
     try:
         secrets = load_secrets()
@@ -122,6 +171,8 @@ def update_secret(name, secret):
 def export_secrets(file_path):
     """
     Export secrets to a file.
+
+    This function exports the secrets to a file. If the export fails, it prints an error message.
     """
     file_path = os.path.join(os.getcwd(), file_path)
     secrets = load_secrets()
@@ -135,6 +186,8 @@ def export_secrets(file_path):
 def mfa_help():
     """
     Show help message.
+
+    This function shows a help message with the available commands.
     """
     print ("""
         MFA CLI - Help
@@ -175,22 +228,37 @@ def mfa_help():
 def generate_mfa(name):
     """
     Generate MFA code.
+
+    This function generates an MFA code for the specified secret. If the secret does not exist, it prints an error message.
     """
+    # Load secrets from the secrets file
     secrets = load_secrets()
+
+    # Check if the named secret exists
     if name in secrets:
+        # Get the secret and pad it to a multiple of 8 bytes
         secret = secrets[name]
         try:
-            # Add padding if necessary
             secret = secret.ljust((len(secret) + 7) // 8 * 8, '=')
             counter = int(time.time()) // 30 
+
+            # Decode the secret from base32
             secret_bytes = base64.b32decode(secret, casefold=True)
+
+            # Calculate the hash for the current time
             message = struct.pack(">Q", counter)
+            # Calculate the HMAC-SHA1 of the hash
             hmac_digest = hmac.new(secret_bytes, message, hashlib.sha1).digest()
+            # Get the offset
             offset = hmac_digest[-1] & 0x0F
+            # Get the 4 bytes at the offset
             truncated_hash = hmac_digest[offset:offset + 4]
+            # Unpack the 4 bytes as a 32-bit big-endian integer
             code = struct.unpack(">I", truncated_hash)[0] & 0x7FFFFFFF
+            # Get the code as a 6-digit integer
             code = code % 1000000
-            print (GREEN + f"MFA code for {name}: {code:06}" + RESET)
+            # Print the code
+            print (GREEN + f"{code:06}" + RESET)
             return code
         except binascii.Error as export_error:
             return print(RED + f"Error generating MFA for {name}: {str(export_error)}" + RESET)
@@ -199,7 +267,9 @@ def generate_mfa(name):
 
 def main():
     """
-    Parse command-line arguments and execute the corresponding command.
+    Main function.
+
+    This function parses the command-line arguments and executes the corresponding command.
     """
     parser = argparse.ArgumentParser(description="CLI to store secrets and generate MFA codes.")
     parser.add_argument("command", choices=["add_secret", "generate_mfa", "delete_secret", "list_secrets", "update_secret", "export_secrets", "mfa_help"], help="Command to execute.")
@@ -249,4 +319,8 @@ def main():
             print(RED + "Error: help command requires no arguments." + RESET)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exception_error:
+        print(exception_error)
+        sys.exit(1)
