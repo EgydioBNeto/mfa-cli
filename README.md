@@ -1,7 +1,7 @@
 # Multi-Factor Authentication Command Line Interface
 
 <div align="center">
-<img src="![MFA-CLI](https://github.com/EgydioBNeto/mfa-cli/assets/84047984/714533aa-22a2-4127-8d40-363e59a573fa);" width="700px"/>
+<img src="https://github.com/EgydioBNeto/mfa-cli/assets/84047984/714533aa-22a2-4127-8d40-363e59a573fa" width="300px"/>
 </div>
 
 ## Description
