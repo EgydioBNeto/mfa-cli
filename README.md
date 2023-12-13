@@ -8,22 +8,22 @@ This is a simple Command Line Interface (CLI) tool written in Python for managin
 
 ### Commands
 
-- **mfa_add** <name> <secret>: Add a new secret.
-- **mfa_delete** <name>: Delete a stored secret.
+- **mfa_add** &lt;name&gt; &lt;secret&gt;: Add a new secret.
+- **mfa_delete** &lt;name&gt; Delete a stored secret.
 - **mfa_list** List all stored secrets.
-- **mfa_update** <name> <secret>: Update an existing secret.
-- **mfa_generate** <name>: Generate an MFA code.
-- **mfa_export** <file_path>: Export secrets to a file.
+- **mfa_update** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
+- **mfa_generate** &lt;name&gt;: Generate an MFA code.
+- **mfa_export** &lt;file_path&gt;: Export secrets to a file.
 - **mfa_help** Show this help message.
 
 ### Summarized Commands
 
-- **mfa** <name> <secret>: Add a new secret.
-- **mfd** <name>: Delete a stored secret.
+- **mfa** &lt;name&gt; &lt;secret&gt;: Add a new secret.
+- **mfd** &lt;name&gt; Delete a stored secret.
 - **mfl** List all stored secrets.
-- **mfu** <name> <secret>: Update an existing secret.
-- **mfg** <name>: Generate an MFA code.
-- **mfe** <file_path>: Export secrets to a file.
+- **mfu** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
+- **mfg** &lt;name&gt;: Generate an MFA code.
+- **mfe** &lt;file_path&gt;: Export secrets to a file.
 - **mfh** Show this help message.
 
 ## Requirements
