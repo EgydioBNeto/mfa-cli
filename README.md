@@ -8,6 +8,12 @@
 
 This is a simple Command Line Interface (CLI) tool written in Python for managing secrets and generating Multi-Factor Authentication (MFA) codes. The script allows users to add, delete, update, list, and export secrets, as well as generate MFA codes.
 
+## Overview
+
+<div align="center">
+<img src="https://github.com/EgydioBNeto/mfa-cli/assets/84047984/4fe8c766-8e76-4183-a80c-9ac143cbc18f" width="1000px"/>
+</div>
+
 ## Features
 
 ### Commands
