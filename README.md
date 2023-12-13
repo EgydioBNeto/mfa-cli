@@ -4,12 +4,6 @@
 
 This is a simple Command Line Interface (CLI) tool written in Python for managing secrets and generating Multi-Factor Authentication (MFA) codes. The script allows users to add, delete, update, list, and export secrets, as well as generate MFA codes.
 
-## Installation
-
-```bash
-python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
-```
-
 ## Features
 
 ### Commands
@@ -32,15 +26,21 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/m
 - **mfe** <file_path>: Export secrets to a file.
 - **mfh** Show this help message.
 
+## Requirements
+
+Python 3
+
+## Installation
+
+```bash
+python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
+```
+
 ## Uninstallation
 
 ```bash
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.py)"
 ```
-
-## Requirements
-
-Python 3
 
 ## Author
 
