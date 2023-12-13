@@ -12,15 +12,7 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/m
 
 ## Features
 
-- **add_secret**: Adds a new secret with a specified name and value.
-- **delete_secret**: Deletes a stored secret by name.
-- **list_secrets**: Lists all stored secrets.
-- **update_secret**: Updates an existing secret with a new value.
-- **generate_mfa**: Generates an MFA code for a given secret name.
-- **export_secrets**: Exports stored secrets to a specified file.
-- **help**: Displays a help message with information about available commands and examples.
-
-### Commands:
+### Commands
 
 - **mfa_add** <name> <secret>: Add a new secret.
 - **mfa_delete** <name>: Delete a stored secret.
@@ -30,7 +22,7 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/m
 - **mfa_export** <file_path>: Export secrets to a file.
 - **mfa_help** Show this help message.
 
-#### Summarized Commands:
+### Summarized Commands
 
 - **mfa** <name> <secret>: Add a new secret.
 - **mfd** <name>: Delete a stored secret.
