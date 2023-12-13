@@ -32,7 +32,7 @@ This is a simple Command Line Interface (CLI) tool written in Python for managin
 
 ## Requirements
 
-Python 3
+- **Python3**
 
 ## Installation
 
