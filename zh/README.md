@@ -2,56 +2,56 @@
 
 <div align="center"> <img src="https://github.com/EgydioBNeto/mfa-cli/assets/84047984/714533aa-22a2-4127-8d40-363e59a573fa" width="300px"> </div>
 
-## Description
+## 描述
 
-This is a simple Command Line Interface (CLI) tool written in Python for managing secrets and generating Multi-Factor Authentication (MFA) codes. The script allows users to add, delete, update, list, and export secrets, as well as generate MFA codes.
+这是一个用 Python 编写的简单命令行界面 (CLI) 工具，用于管理机密和生成多重身份验证 (MFA) 代码。该脚本允许用户添加、删除、更新、列出和导出机密，以及生成 MFA 代码。
 
-## Overview
+## 概述
 
 <div align="center"> <img src="https://github.com/EgydioBNeto/mfa-cli/assets/84047984/4fe8c766-8e76-4183-a80c-9ac143cbc18f" width="1000px"> </div>
 
-## Features
+## 特征
 
-### Commands
+### 命令
 
-- **mfa_add** &lt;name&gt; &lt;secret&gt;: Add a new secret.
-- **mfa_delete** &lt;name&gt; Delete a stored secret.
-- **mfa_list** List all stored secrets.
-- **mfa_update** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
-- **mfa_generate** &lt;name&gt;: Generate an MFA code.
-- **mfa_export** &lt;file_path&gt;: Export secrets to a file.
-- **mfa_help** Show this help message.
+- **mfa_add** &lt;名称&gt; &lt;秘密&gt;：添加新秘密。
+- **mfa_delete** &lt;名称&gt; 删除存储的机密。
+- **mfa_list**列出所有存储的机密。
+- **mfa_update** &lt;名称&gt; &lt;秘密&gt;：更新现有秘密。
+- **mfa_generate** &lt;名称&gt;：生成 MFA 代码。
+- **mfa_export** &lt;file_path&gt;：将机密导出到文件。
+- **mfa_help**显示此帮助消息。
 
-### Summarized Commands
+### 命令汇总
 
-- **mfa** &lt;name&gt; &lt;secret&gt;: Add a new secret.
-- **mfd** &lt;name&gt; Delete a stored secret.
-- **mfl** List all stored secrets.
-- **mfu** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
-- **mfg** &lt;name&gt;: Generate an MFA code.
-- **mfe** &lt;file_path&gt;: Export secrets to a file.
-- **mfh** Show this help message.
+- **mfa** &lt;名称&gt; &lt;秘密&gt;：添加新秘密。
+- **mfd** &lt;name&gt; 删除存储的机密。
+- **mfl**列出所有存储的机密。
+- **mfu** &lt;名称&gt; &lt;秘密&gt;：更新现有秘密。
+- **mfg** &lt;名称&gt;：生成 MFA 代码。
+- **mfe** &lt;file_path&gt;：将机密导出到文件。
+- **mfh**显示此帮助消息。
 
-## Requirements
+## 要求
 
 - **Python3**
 
-## Installation
+## 安装
 
 ```bash
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
 ```
 
-## Uninstallation
+## 卸载
 
 ```bash
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.py)"
 ```
 
-## Author
+## 作者
 
 [EgydioBNeto](https://github.com/EgydioBNeto)
 
-## License
+## 执照
 
-This project is licensed under the [MIT License](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE).
+该项目根据[MIT 许可证](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE)获得许可。
