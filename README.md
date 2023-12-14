@@ -6,7 +6,7 @@
 
 ## Languages
 
-[English](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/en/README.md), [Portuguese-BR](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/pt-br/README.md), [Spanish](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/es/README.md), [German](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/de/README.md), [French](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/fr/README.md), [Russian](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ru/README.md), [Chinese](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/zh/README.md), [Japanese](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ja/README.md), [Hindi](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/hi/README.md), [Arabic](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ar/README.md)
+[English](https://github.com/EgydioBNeto/mfa-cli/blob/main/README.md), [Portuguese-BR](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/pt-br/README.md), [Spanish](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/es/README.md), [German](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/de/README.md), [French](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/fr/README.md), [Russian](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ru/README.md), [Chinese](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/zh/README.md), [Japanese](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ja/README.md), [Hindi](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/hi/README.md), [Arabic](https://github.com/EgydioBNeto/mfa-cli/blob/main/languages/ar/README.md)
 
 ## Description
 
