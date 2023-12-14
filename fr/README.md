@@ -4,35 +4,35 @@
 
 ## Description
 
-This is a simple Command Line Interface (CLI) tool written in Python for managing secrets and generating Multi-Factor Authentication (MFA) codes. The script allows users to add, delete, update, list, and export secrets, as well as generate MFA codes.
+Il s'agit d'un simple outil d'interface de ligne de commande (CLI) écrit en Python pour gérer les secrets et générer des codes d'authentification multifacteur (MFA). Le script permet aux utilisateurs d'ajouter, de supprimer, de mettre à jour, de répertorier et d'exporter des secrets, ainsi que de générer des codes MFA.
 
-## Overview
+## Aperçu
 
 <div align="center"> <img src="https://github.com/EgydioBNeto/mfa-cli/assets/84047984/4fe8c766-8e76-4183-a80c-9ac143cbc18f" width="1000px"> </div>
 
-## Features
+## Caractéristiques
 
-### Commands
+### Commandes
 
-- **mfa_add** &lt;name&gt; &lt;secret&gt;: Add a new secret.
-- **mfa_delete** &lt;name&gt; Delete a stored secret.
-- **mfa_list** List all stored secrets.
-- **mfa_update** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
-- **mfa_generate** &lt;name&gt;: Generate an MFA code.
-- **mfa_export** &lt;file_path&gt;: Export secrets to a file.
-- **mfa_help** Show this help message.
+- **mfa_add** &lt;name&gt; &lt;secret&gt; : ajoutez un nouveau secret.
+- **mfa_delete** &lt;nom&gt; Supprime un secret stocké.
+- **mfa_list** Répertorie tous les secrets stockés.
+- **mfa_update** &lt;name&gt; &lt;secret&gt; : met à jour un secret existant.
+- **mfa_generate** &lt;nom&gt; : génère un code MFA.
+- **mfa_export** &lt;file_path&gt; : exporte les secrets vers un fichier.
+- **mfa_help** Afficher ce message d'aide.
 
-### Summarized Commands
+### Commandes résumées
 
-- **mfa** &lt;name&gt; &lt;secret&gt;: Add a new secret.
-- **mfd** &lt;name&gt; Delete a stored secret.
-- **mfl** List all stored secrets.
-- **mfu** &lt;name&gt; &lt;secret&gt;: Update an existing secret.
-- **mfg** &lt;name&gt;: Generate an MFA code.
-- **mfe** &lt;file_path&gt;: Export secrets to a file.
-- **mfh** Show this help message.
+- **mfa** &lt;nom&gt; &lt;secret&gt; : ajoutez un nouveau secret.
+- **mfd** &lt;nom&gt; Supprime un secret stocké.
+- **mfl** Répertorie tous les secrets stockés.
+- **mfu** &lt;name&gt; &lt;secret&gt; : mettre à jour un secret existant.
+- **mfg** &lt;nom&gt; : génère un code MFA.
+- **mfe** &lt;file_path&gt; : exporte les secrets vers un fichier.
+- **mfh** Afficher ce message d'aide.
 
-## Requirements
+## Exigences
 
 - **Python3**
 
@@ -42,16 +42,16 @@ This is a simple Command Line Interface (CLI) tool written in Python for managin
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/install.py)"
 ```
 
-## Uninstallation
+## Désinstallation
 
 ```bash
 python3 -c "$(curl -fsSL https://raw.githubusercontent.com/EgydioBNeto/mfa-cli/main/uninstall.py)"
 ```
 
-## Author
+## Auteur
 
-[EgydioBNeto](https://github.com/EgydioBNeto)
+[ÉgydioBNeto](https://github.com/EgydioBNeto)
 
-## License
+## Licence
 
-This project is licensed under the [MIT License](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE).
+Ce projet est sous [licence MIT](https://github.com/EgydioBNeto/mfa-cli/blob/main/LICENSE) .
