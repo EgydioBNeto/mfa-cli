@@ -40,7 +40,7 @@ Before you begin, please take a moment to review the following guidelines.
 
 ## Code of Conduct
 
-This project follows the [Code of Conduct](https://github.com/EgydioBNeto/mfa-cli/blob/main/CODE_OF_CONDUCT.md). By participating, it is expected that all contributors and maintainers adhere to this code.
+This project follows the [Code of Conduct](https://github.com/EgydioBNeto/mfa-cli/blob/main/.github/CODE_OF_CONDUCT.md). By participating, it is expected that all contributors and maintainers adhere to this code.
 
 ## Help
 
